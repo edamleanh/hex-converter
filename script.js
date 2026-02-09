@@ -217,7 +217,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Modal Logic ---
     function openModal(modal) {
-        modal.classList.add('show');
+        modal.classList.remove('hidden');
+        // Small delay to allow display:flex to apply before opacity transition
+        requestAnimationFrame(() => {
+            modal.classList.add('show');
+        });
+        
         if (modal === setupModal) {
             ghUsernameInput.value = settings.username;
             ghRepoInput.value = settings.repo;
@@ -228,6 +233,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeModal(modal) {
         modal.classList.remove('show');
+        // Wait for transition to finish before hiding
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
     }
 
     // --- GitHub API Logic ---
