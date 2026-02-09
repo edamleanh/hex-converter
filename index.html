@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hex to Text Decoder - Giải mã HEX</title>
-    <meta name="description" content="Công cụ chuyển đổi mã Hex sang văn bản (UTF-8) nhanh chóng, miễn phí, chạy ngay trên trình duyệt.">
+    <meta name="description"
+        content="Công cụ chuyển đổi mã Hex sang văn bản (UTF-8) nhanh chóng, miễn phí, chạy ngay trên trình duyệt.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="icons/icon48.png"> 
+    <link rel="icon" type="image/png" href="icons/icon48.png">
 </head>
+
 <body>
     <div class="background-mesh"></div>
-    
+
     <main class="container">
         <div class="card glass-effect">
             <header class="card-header">
@@ -25,7 +28,12 @@
                     <div class="textarea-wrapper">
                         <textarea id="hexInput" placeholder="Ví dụ: 48 65 6c 6c 6f..." spellcheck="false"></textarea>
                         <button id="pasteBtn" class="icon-btn" title="Dán từ clipboard" aria-label="Paste">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                </path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            </svg>
                         </button>
                     </div>
                     <div class="error-message" id="errorMsg">Mã Hex không hợp lệ</div>
@@ -34,27 +42,135 @@
                 <div class="action-buttons">
                     <button id="convertBtn" class="btn btn-primary">
                         <span>Chuyển đổi</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="7 13 12 18 17 13"></polyline>
+                            <polyline points="7 6 12 11 17 6"></polyline>
+                        </svg>
                     </button>
-                    <button id="clearBtn" class="btn btn-secondary">Xóa</button>
+                    <button id="clearBtn" class="btn btn-secondary" title="Xóa nội dung">Xóa</button>
+                    <button id="storageBtn" class="btn btn-secondary" title="Kho lưu trữ đám mây">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                            <polyline points="7 3 7 8 15 8"></polyline>
+                        </svg>
+                    </button>
+                    <button id="settingsBtn" class="btn btn-secondary" title="Cài đặt kết nối">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                            </path>
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="output-group hidden" id="resultSection">
                     <label for="textOutput">Kết quả</label>
                     <div class="textarea-wrapper result-wrapper">
                         <textarea id="textOutput" readonly></textarea>
-                        <button id="copyBtn" class="icon-btn" title="Sao chép kết quả" aria-label="Copy">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
+                        <div class="result-actions">
+                            <button id="saveLinkBtn" class="icon-btn hidden" title="Lưu vào đám mây"
+                                aria-label="Save to Cloud">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                    <polyline points="7 3 7 8 15 8"></polyline>
+                                </svg>
+                            </button>
+                            <button id="copyBtn" class="icon-btn" title="Sao chép kết quả" aria-label="Copy">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     <a href="#" id="openLinkBtn" class="link-btn hidden" target="_blank" rel="noopener noreferrer">
-                        Mở liên kết này 
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        Mở liên kết này
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
                     </a>
                 </div>
             </div>
         </div>
-        
+
+        <!-- Setup Modal -->
+        <div id="setupModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Cài đặt kết nối</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-desc">Nhập Personal Access Token (PAT) để cho phép lưu trữ vào GitHub của bạn.</p>
+                    <div class="form-group">
+                        <label for="ghUsername">GitHub Username</label>
+                        <input type="text" id="ghUsername" placeholder="Ví dụ: edamleanh">
+                    </div>
+                    <div class="form-group">
+                        <label for="ghRepo">Repository Name</label>
+                        <input type="text" id="ghRepo" placeholder="Ví dụ: hex-converter">
+                    </div>
+                    <div class="form-group">
+                        <label for="ghToken">Personal Access Token (PAT)</label>
+                        <input type="password" id="ghToken" placeholder="ghp_...">
+                        <small>Token cần quyền <code>repo</code> hoặc <code>public_repo</code>.</small>
+                    </div>
+                    <button id="saveSettingsBtn" class="btn btn-primary">Lưu cài đặt</button>
+                    <div id="settingsStatus" class="status-msg"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Storage Modal -->
+        <div id="storageModal" class="modal hidden">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h2>Kho lưu trữ đám mây</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="linkList" class="link-list">
+                        <!-- Links will be injected here -->
+                        <div class="loading-spinner">Đang tải dữ liệu...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Link Modal -->
+        <div id="saveLinkModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Lưu liên kết</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="linkName">Tên gợi nhớ</label>
+                        <input type="text" id="linkName" placeholder="Ví dụ: Link tài liệu mật...">
+                    </div>
+                    <div class="form-group"></div>
+                    <label>URL</label>
+                    <input type="text" id="linkUrlPreview" readonly class="input-readonly">
+                </div>
+                <button id="confirmSaveLinkBtn" class="btn btn-primary">Lưu ngay</button>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
         <footer class="footer">
             <p>Built with <span style="color: #e25555;">&hearts;</span> using local logic</p>
         </footer>
@@ -66,4 +182,5 @@
     <script src="shared/decoder.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
