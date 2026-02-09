@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex to Text Decoder - Giải mã HEX</title>
+    <meta name="description" content="Công cụ chuyển đổi mã Hex sang văn bản (UTF-8) nhanh chóng, miễn phí, chạy ngay trên trình duyệt.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="icons/icon48.png"> 
+</head>
+<body>
+    <div class="background-mesh"></div>
+    
+    <main class="container">
+        <div class="card glass-effect">
+            <header class="card-header">
+                <h1>Hex Decoder</h1>
+                <p>Chuyển đổi mã Hex thành văn bản ngay lập tức</p>
+            </header>
+
+            <div class="converter-section">
+                <div class="input-group">
+                    <label for="hexInput">Nhập chuỗi Hex</label>
+                    <div class="textarea-wrapper">
+                        <textarea id="hexInput" placeholder="Ví dụ: 48 65 6c 6c 6f..." spellcheck="false"></textarea>
+                        <button id="pasteBtn" class="icon-btn" title="Dán từ clipboard" aria-label="Paste">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                        </button>
+                    </div>
+                    <div class="error-message" id="errorMsg">Mã Hex không hợp lệ</div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="convertBtn" class="btn btn-primary">
+                        <span>Chuyển đổi</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+                    </button>
+                    <button id="clearBtn" class="btn btn-secondary">Xóa</button>
+                </div>
+
+                <div class="output-group hidden" id="resultSection">
+                    <label for="textOutput">Kết quả</label>
+                    <div class="textarea-wrapper result-wrapper">
+                        <textarea id="textOutput" readonly></textarea>
+                        <button id="copyBtn" class="icon-btn" title="Sao chép kết quả" aria-label="Copy">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                    <a href="#" id="openLinkBtn" class="link-btn hidden" target="_blank" rel="noopener noreferrer">
+                        Mở liên kết này 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>Built with <span style="color: #e25555;">&hearts;</span> using local logic</p>
+        </footer>
+    </main>
+
+    <div id="toast" class="toast">Đã sao chép!</div>
+
+    <!-- Reusing existing decoder logic -->
+    <script src="shared/decoder.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
